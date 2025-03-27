@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+</head>
+<body>
+
+    {% extends 'library/base.html' %}
+    {% block title %}Kurs Qo‘shish{% endblock %}
+    {% block content %}
+    <div class="container">
+        <h1>Yangi Kurs Qo‘shish</h1>
+        <form>
+            <input type="text" class="form-control" placeholder="Kurs nomi">
+            <button type="submit" class="btn btn-success mt-3">Saqlash</button>
+        </form>
+        <a href="{% url 'teacher-list' %}" class="btn btn-secondary mt-3">← Orqaga</a>
+        <a href="{% url 'create-lesson'%}" class="btn btn-primary mt-3">Keyingi bosqich → Dars Qo‘shish</a>
+</div>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review</title>
+</head>
+<body>
+
+    {% extends 'library/base.html' %}
+    {% block title %}Ko‘rib chiqish{% endblock %}
+    {% block content %}
+    <div class="container">
+        <h1>Ko‘rib chiqish sahifasi</h1>
+        <p>Hamma ma'lumotlarni tekshirib, yakuniy tasdiqlash qiling.</p>
+        <a href="{% url 'create-lesson' %}" class="btn btn-secondary mt-3">← Orqaga</a>
+        <a href="{% url 'home' %}" class="btn btn-success mt-3">✅ Tasdiqlash</a>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!-- create_course.html -->
+{% extends 'library/base.html' %}
+
+{% block title %}Create Course{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Create a New Course</h2>
+    <div class="card mt-4">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

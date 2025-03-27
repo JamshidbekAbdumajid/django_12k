@@ -1,0 +1,19 @@
+<!-- create_review.html -->
+{% extends 'library/base.html' %}
+
+{% block title %}Create Review{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Submit a Review</h2>
+    <div class="card mt-4">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

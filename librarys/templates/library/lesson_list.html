@@ -1,0 +1,22 @@
+
+<!-- lesson_list.html -->
+{% extends 'library/base.html' %}
+
+{% block title %}Lesson List{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Available Lessons</h2>
+
+<form class="mb-3">
+    <input name="search" value="{{ search }}" class="form-control" placeholder="Search Lesson">
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+<div class="list-group">
+    {% for form in forms %}
+        <a href="{% url 'lesson-view' form.pk %}" class="list-group-item list-group-item-action">
+            <strong>{{ form.course }}</strong> - {{ form.title }}
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

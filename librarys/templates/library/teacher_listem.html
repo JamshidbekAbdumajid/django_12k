@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teachers</title>
+</head>
+<body>
+    {% extends 'library/base.html' %}
+    {% block title %}O‘qituvchilar Ro‘yxati{% endblock %}
+    {% block content %}
+    <div class="container">
+        <h1>O‘qituvchilar Ro‘yxati</h1>
+        <ul class="list-group">
+            <li class="list-group-item">O‘qituvchi 1</li>
+            <li class="list-group-item">O‘qituvchi 2</li>
+        </ul>
+        <a href="{% url 'course-list' %}" class="btn btn-secondary mt-3">← Orqaga</a>
+        <a href="{% url 'create-course' %}" class="btn btn-primary mt-3">Keyingi bosqich → Kurs qo‘shish</a>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

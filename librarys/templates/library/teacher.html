@@ -1,0 +1,22 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Teacher List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Teacher List</h2>
+    <form class="mb-3">
+        <input name="search" value="{{ search }}" class="form-control" placeholder="Search Teacher">
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </form>
+    <ul class="list-group mt-4">
+        {% for form in forms %}
+        <li class="list-group-item">
+            <a href="{% url 'teacher-list' form.pk %}">
+                {{ form.first_name }} {{ form.last_name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

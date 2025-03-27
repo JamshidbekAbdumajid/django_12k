@@ -1,0 +1,24 @@
+{% extends "library/base.html" %}
+
+{% block title %}{{ forms.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">{{ forms.title }}</h2>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Course Information</h5>
+            <p class="card-text">
+                <strong>Instructor:</strong> {{ forms.teacher }}<br>
+                <strong>Description:</strong> {{ forms.description }}<br>
+                <strong>Price:</strong> {{ forms.price }}  <!-- Narxni qo‘shdik -->
+            </p>
+        </div>
+    </div>
+
+    <a href="{% url 'course-list' %}" class="btn btn-secondary mt-3">Back to Courses</a>
+</div>
+{% endblock %}
+
+

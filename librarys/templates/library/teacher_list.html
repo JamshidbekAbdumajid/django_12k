@@ -1,0 +1,19 @@
+<!-- teacher.html -->
+{% extends 'library/base.html' %}
+
+{% block title %}Teacher Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">{{ forms.first_name }}</h2>
+    <h2 class="text-center">{{ forms.last_name }}</h2>
+
+
+    <p class="text-muted text-center">Biography:</p>
+    <div class="card mt-4">
+        <div class="card-body">
+            <p class="card-text">{{ forms.bio }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

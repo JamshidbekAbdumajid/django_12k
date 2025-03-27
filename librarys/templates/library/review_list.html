@@ -1,0 +1,21 @@
+
+
+<!-- review_list.html -->
+{% extends 'library/base.html' %}
+
+{% block title %}Review List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Review List</h2>
+    <ul class="list-group mt-4">
+        {% for form in forms %}
+        <li class="list-group-item">
+            <a href="{% url 'review-view' form.pk %}">
+                {{ form.course }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
