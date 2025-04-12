@@ -1,11 +1,33 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse
+
 
 from .forms import ReviewForm,CourseForm,LessonForm
 from  .models import Course,Lesson,Payment,Review,Enrollment,Teacher
 # def user_view(request):
 #     username ="Hello Django"
 #     return HttpResponse(f" {username}")
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import RegisterForm
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterForm()
+    return render(request, 'library/register.html', {'form': form})
+
+
+
+
+
+
 
 
 

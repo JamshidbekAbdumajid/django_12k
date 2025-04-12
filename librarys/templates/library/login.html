@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+<div class="container">
+    <h2>Saytga kirish</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                Foydalanuvchi nomi yoki parol noto'g'ri!
+            </div>
+        {% endif %}
+        
+        <div class="form-group">
+            <label for="id_username">Foydalanuvchi nomi</label>
+            <input type="text" name="username" class="form-control" id="id_username" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="id_password">Parol</label>
+            <input type="password" name="password" class="form-control" id="id_password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Kirish</button>
+        <a href="{% url 'password_reset' %}" class="btn btn-link">Parolni unutdingizmi?</a>
+    </form>
+</div>
+{% endblock %}
