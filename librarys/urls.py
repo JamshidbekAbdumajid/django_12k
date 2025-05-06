@@ -3,13 +3,13 @@ from  .views import (teacher_view,teacher_list,create_course,course_list,
                      courses_view,create_lesson,lessons_view,lesson_list,
                      create_review,review_view,review_list,home_redirect,welcome_view,
                      course_list,teacher_list,add_course,add_lesson,review_page)
-from django.contrib.auth.views import LoginView,LogoutView
-from .views import register
+from .views import register_view,login_view
 urlpatterns = [
 
-    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 
-    path('', register, name='register'),
+
+    path('register/', register_view, name='register'),
+    path('login/', login_view, name='login'),
     path('', welcome_view, name='welcome'),
     path('', home_redirect, name='home'),
 

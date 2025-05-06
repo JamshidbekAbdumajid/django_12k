@@ -1,27 +1,54 @@
-
+from django.contrib.auth.handlers.modwsgi import check_password
+from django.contrib.auth.models import User
 
 from .forms import ReviewForm,CourseForm,LessonForm
-from  .models import Course,Lesson,Payment,Review,Enrollment,Teacher
-# def user_view(request):
-#     username ="Hello Django"
-#     return HttpResponse(f" {username}")
+from  .models import Course,Lesson,Review,Teacher
 
 
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .forms import RegisterForm
 
-def register(request):
+
+
+def login_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-    else:
-        form = RegisterForm()
-    return render(request, 'library/register.html', {'form': form})
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = User.objects.filter(username=username)
+        if user.exists():
+            user = user.first()
+            if check_password(password, user.password):
+                login(request, user)
+                return redirect('home')
+    return render(request,'library/login.html')
+
+def register_view(request):
+    if request.method == 'GET':
+        return render(request,'library/register.html')
+    elif request.method == 'POST':
+        first_name = request.POST['first_name']
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.filter(username=username)
+        if not user.exist():
+            user = User.objects.create_user(username=username,first_name=first_name)
+            user.set_password(password)
+            user.save()
+            return render(request,'library/login.html')
+        return render(request,'library/register.html')
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def home_view(request):
+    return render(request, 'library/home.html')
 
 
 

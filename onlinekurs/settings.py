@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'librarys',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+
 ]
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -57,6 +56,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'onlinekurs.urls'
+
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
